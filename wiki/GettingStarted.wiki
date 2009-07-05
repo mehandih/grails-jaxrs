@@ -1,0 +1,3 @@
+#summary Helps you getting started with the JSR 311 plugin for Grails.
+
+Coming soon ...
