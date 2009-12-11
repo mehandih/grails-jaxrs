@@ -1,0 +1,278 @@
+#summary A quick guide to getting started with the JSR 311 plugin for Grails.
+#labels Featured
+
+<wiki:toc/>
+
+=Overview=
+
+This page helps you getting started with the JSR 311 plugin for Grails. It is assumed that you have a basic understanding of [http://www.grails.org Grails] and the [http://jcp.org/en/jsr/detail?id=311 JSR 311] (JAX-RS: The Java API for RESTful Web Services). The examples in the following chapters have been tested with Grails 1.1.1 and 1.1.2. Grails 1.1.2 is the recommended version to use. For instructions how to download and install Grails refer to the [http://grails.org/doc/1.1.2/guide/2.%20Getting%20Started.html#2.1%20Downloading%20and%20Installing Grails reference documentation section 2.1]. The [#Using_Eclipse Using Eclipse] section on this page explains how to setup the examples in Eclipse.
+
+=Hello world=
+
+==Create a project==
+
+To use the plugin we create a new Grails project. Change the working directory to a location where you want to create a new Grails project and enter 
+
+{{{
+grails create-app hello
+}}} 
+
+on the command line. This creates a new directory {{{hello}}}. 
+
+==Install the plugin==
+
+To install the plugin from the [http://www.grails.org/plugin/home Grails Plugin Repository], go to the created {{{hello}}} directory and enter 
+
+{{{
+grails install-plugin jaxrs
+}}} 
+
+This will download the latest released version of the plugin from the [http://www.grails.org/plugin/home Grails Plugin Repository]. For further installation options, such as installing a development snapshot, refer to the [InstallationInstructions installation instructions].
+
+==Create a resource==
+
+To create a JAX-RS resource named {{{test}}} enter
+
+{{{
+grails create-resource test
+}}}
+
+This will create a {{{TestResource.groovy}}} file under {{{grails-app/resources}}} and a {{{TestResourceTests.groovy}}} file under {{{test/unit}}}. The {{{TestResourceTests.groovy}}} file is a unit test template. The {{{TestResource.groovy}}} file is the generated JAX-RS resource. 
+
+{{{
+import javax.ws.rs.GET
+import javax.ws.rs.Path
+import javax.ws.rs.Produces
+
+
+@Path('/api/test')
+class TestResource {
+
+    @GET
+    @Produces('text/plain')
+    String getTestRepresentation() {
+        'Test'
+    }
+    
+}
+}}}
+
+It defines a single method that responds to HTTP GET operations. The HTTP response contains the return value of this method, {{{Test}}} in this example. The content type of the response ({{{Content-Type}}} header) is {{{text/plain}}}. The created resource is ready to use as shown in the next section.
+
+Creating resources via the command line is only one option. An alternative is to create resource files by hand. Any {{{*Resource.groovy}}} file created under {{{grails-app/resources}}} is assumed to be a JAX-RS resource and auto-detected by the grails-jaxrs plugin. These resources are checked for the presence of JAX-RS annotations as defined by JAX-RS 1.0 specification, section 3.1. Resources that aren't properly annotated are ignored by the plugin. 
+
+==Run the application==
+
+To start the application enter 
+
+{{{
+grails run-app
+}}}
+
+on the comamnd line. Then open a browser window and go to {{{http://localhost:8080/hello/api/test}}}. The browser should now display "{{{Test}}}".
+
+==Change the code==
+
+The grails-jaxrs plugin also support code changes at runtime i.e. without restarting the server. To demonstrate that we let add a {{{name}}} parameter to the {{{getTestRepresentation}}} method and bind it to a {{{name}}} query parameter using the JAX-RS {{{@QueryParam}}} annotation. The HTTP response entity will vary depending on the {{{name}}} query parameter. Here's the modified source code.
+
+{{{
+import javax.ws.rs.GET
+import javax.ws.rs.Path
+import javax.ws.rs.Produces
+import javax.ws.rs.QueryParam
+
+
+@Path('/api/test')
+class TestResource {
+
+    @GET
+    @Produces('text/plain')
+    String getTestRepresentation(@QueryParam('name') String name) {
+        "Hello ${name ? name : 'unknown'}"
+    }
+    
+}
+}}}
+
+When you save the changes the plugin re-initializes the JAX-RS runtime (see also console output). Go to {{{http://localhost:8080/hello/api/test?name=Martin}}} and you should see {{{Hello Martin}}} in the browser window. If you additionally want to factor out the greeting logic into a Grails service, refer to the [AdvancedFeatures#Service_injection service injection] section for instructions.
+
+=Scaffolding=
+
+The grails-jaxrs plugin also supports scaffolding. It allows you to generate a RESTful service interface for one or more domain classes based on JAX-RS resource classes. Supported representation formats are XML and JSON. The following sections walk through a simple example. Please note that the scaffolding feature of the plugin is still *early-access*.
+
+==Create a domain class==
+
+To create a {{{Person}}} domain class go to the project's root directory and enter
+
+{{{
+grails create-domain-class person
+}}}
+
+Open the generated {{{Person.groovy}}} file (under {{{grails-app/domain}}}) and add two properties, {{{firstName}}} and {{{lastName}}}.
+
+{{{
+class Person {
+
+    static constraints = {
+    }
+    
+    String firstName
+    
+    String lastName
+    
+}
+}}}
+
+==Generate the REST API==
+
+To generate JAX-RS resources that implement the RESTful service interface for that domain class enter
+
+{{{
+grails generate-resources person
+}}}
+
+This will generate two resource classes, {{{PersonCollectionResource.groovy}}} and {{{PersonResource.groovy}}} that support HTTP POST, GET, PUT and DELETE operations for creating, reading, updating and deleting {{{Person}}} objects, respectively. {{{PersonCollectionResource.groovy}}} is related to {{{Person}}} lists, {{{PersonResource.groovy}}} is related to individual {{{Person}}} instances. Let's take a look at how to use the generated RESTful service interface.
+
+==Use the REST API==
+
+Start the {{{hello}}} application with
+
+{{{
+grails run-app
+}}}
+
+New person objects can be created by POSTing to {{{http://localhost:8080/hello/person}}}. The following request POSTs an XML representation of a person object. 
+
+{{{
+POST /hello/api/person HTTP/1.1
+Content-Type: application/xml
+Accept: application/xml
+Host: localhost:8080
+Content-Length: 82
+
+<person>
+  <firstName>Sam</firstName>
+  <lastName>Hill</lastName>
+</person>
+}}}
+
+
+The {{{Content-Type}}} header must be set either to {{{application/xml}}} or {{{text/xml}}}. After sending the request, the server creates a new person object in the database and returns an XML representation of it. 
+
+{{{
+HTTP/1.1 201 Created
+Content-Type: application/xml
+Location: http://localhost:8080/hello/api/person/1
+Transfer-Encoding: chunked
+Server: Jetty(6.1.14)
+
+<?xml version="1.0" encoding="UTF-8"?>
+<person id="1">
+  <firstName>Sam</firstName>
+  <lastName>Hill</lastName>
+</person>
+}}}
+
+The client explicitly requested an XML representation via the {{{Accept}}} request header. Note that the returned representation differs from the submitted representation by an {{{id}}} attribute in the {{{<person>}}} element. This id is also contained in the {{{Location}}} response header, the URL of the created resource. The response code is {{{201}}} ({{{CREATED}}}). Let's create another person object using a JSON representation. Here's the request
+
+{{{
+POST /hello/api/person HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+Host: localhost:8080
+Content-Length: 58
+
+{"class":"Person","firstName":"Fabien","lastName":"Barel"}
+}}}
+
+The response also contains a JSON representation of the created person (see {{{Accept}}} request header). The id of the created person object is {{{2}}}.
+
+{{{
+HTTP/1.1 201 Created
+Content-Type: application/json
+Location: http://localhost:8080/hello/api/person/2
+Transfer-Encoding: chunked
+Server: Jetty(6.1.14)
+
+{"class":"Person","id":"2","firstName":"Fabien","lastName":"Barel"}
+}}}
+
+Content negotiation via {{{Content-Type}}} and  {{{Accept}}} headers works for other HTTP methods as well. To GET a list of created persons, open a browser (Firefox in our example) and enter the URL {{{http://localhost:8080/hello/api/person}}}. This returns an XML representation of the list of persons stored in the database.
+
+http://grails-jaxrs.googlecode.com/svn/wiki/images/scaffolding-03.png
+
+An XML representation is returned because Firefox sets an {{{Accept=text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8}}} request header. To get the representation of a single person, specify the id in the URL. For example, to get the person with id 1 use {{{http://localhost:8080/hello/api/person/1}}}
+
+http://grails-jaxrs.googlecode.com/svn/wiki/images/scaffolding-04.png
+
+If you try to get a person that doesn't exist, an error message (with a status code {{{404}}}) is returned.
+
+http://grails-jaxrs.googlecode.com/svn/wiki/images/scaffolding-05.png
+
+In the next step we update the first name of person 1 by PUTting a new representation to {{{http://localhost:8080/hello/api/person/1}}}. 
+
+{{{
+PUT /hello/api/person/1 HTTP/1.1
+Content-Type: application/xml
+Accept: application/xml
+Host: localhost:8080
+Content-Length: 85
+
+<person>
+  <firstName>Samuel</firstName>
+  <lastName>Hill</lastName>
+</person>
+}}}
+
+The response is a new representation of the updated person.
+
+{{{
+HTTP/1.1 200 OK
+Content-Type: application/xml
+Transfer-Encoding: chunked
+Server: Jetty(6.1.14)
+
+<?xml version="1.0" encoding="UTF-8"?>
+<person id="1">
+  <firstName>Samuel</firstName>
+  <lastName>Hill</lastName>
+</person>
+}}}
+
+GETting the person list again shows the update of person 1.
+
+http://grails-jaxrs.googlecode.com/svn/wiki/images/scaffolding-07.png
+
+Finally, we delete person 1 by sending a DELETE request to {{{http://localhost:8080/hello/api/person/1}}}.
+
+{{{
+DELETE /hello/api/person/1 HTTP/1.1
+Accept: application/xml
+Host: localhost:8080
+}}}
+
+GETting the person lists again shows that person 1 has actually been deleted.
+
+http://grails-jaxrs.googlecode.com/svn/wiki/images/scaffolding-09.png
+
+The [AdvancedFeatures#Using_GORM using GORM section] of the [AdvancedFeatures advanced features] page walks through the source code of the generated JAX-RS resources.
+
+=Using Eclipse=
+
+Using the {{{hello}}} project with the grails-jaxrs plugin in Eclipse requires a bit more than [http://grails.org/Eclipse+IDE+Integration just importing] the {{{hello}}} project. After import, the grails-jaxrs classes are not on the classpath of the project, therefore, you'll see compile errors for generated JAX-RS resources. The best way to resolve the compile errors is to import the grails-jaxrs plugin project as a separate project in Eclipse and reference that project from the {{{hello}}} project. 
+
+To checkout a released version of the grails-jaxrs project enter 
+
+{{{
+svn export http://grails-jaxrs.googlecode.com/svn/tags/jaxrs-<version> jaxrs
+}}}
+
+on the command line where {{{<version>}}} must be replaced by the version of the plugin you're using. This will create a local directory {{{jaxrs}}}, the root directory of the project. If you use a development snapshot checkout the sources from {{{http://grails-jaxrs.googlecode.com/svn/trunk/jaxrs}}}. 
+
+To import the project into Eclipse go to {{{File -> Import... -> General -> Existing Projects Into Workspace}}} and press {{{Next}}}. Then select the project's root directory and click {{{Finish}}}. You should now see a {{{jaxrs}}} project in the package explorer.
+
+To add this new project as dependency to the {{{hello}}} project, right-click on the {{{hello}}} project and go to {{{Properties -> Java Build Path -> Projects -> Add...}}}. Select the {{{jaxrs}}} project from the list of projects in the workspace and press {{{OK}}}. The compile erros should now disappear.
+
+=Next steps=
+
+  * Take a look at the [AdvancedFeatures advanced features] of the grails-jaxrs plugin.

@@ -1,0 +1,64 @@
+#summary Installation instructions for the JSR 311 plugin for Grails.
+#labels Featured
+
+<wiki:toc/>
+
+=Prerequisites=
+
+Using the grails-jaxrs plugin requires a Grails 1.1.1 (or higher) installation. Recommended is version 1.1.2. Please note that this plugin has not been tested yet with a Grails 1.2 milestone or release candidate.
+
+For instructions how to download and install Grails refer to the [http://grails.org/doc/1.1.1/guide/2.%20Getting%20Started.html#2.1%20Downloading%20and%20Installing Grails reference documentation section 2.1].
+
+=Getting the plugin= 
+
+*Note:* If you want to install the plugin directly from the [http://www.grails.org/plugin/home Grails Plugin Repository] you can skip this section and go directly to the section [#Installing_the_plugin Installing the plugin].
+
+==Binaries==
+
+The plugin binaries can be downloaded from the project's [http://code.google.com/p/grails-jaxrs/downloads/list download section]. The latest stable version is grails-jaxrs-0.3.zip.
+
+==Sources==
+
+If you want to build the plugin from its sources checkout the code from Subversion with
+
+{{{
+svn checkout http://grails-jaxrs.googlecode.com/svn/trunk/jaxrs jaxrs
+}}}
+
+and go to the created {{{jaxrs}}} directory. Optionally, run the unit and integration tests by entering 
+
+{{{
+grails test-app
+}}} 
+
+on the command line. To create a binary package of the plugin enter
+
+{{{
+grails package-plugin
+}}} 
+
+The filename of the created plugin is {{{grails-jaxrs-<version>.zip}}} where {{{<version>}}} is the current development version. To build older versions of the plugin from its sources use one of the [http://grails-jaxrs.googlecode.com/svn/tags grails-jaxrs tags].
+
+=Installing the plugin= 
+
+If you want to use the grails-jaxrs plugin in a Grails application you need to install it first. The plugin can be either be installed directly from the Grails plugin repository or from a local package that has been download before or built from the sources.
+
+==From the Grails plugin repository==
+
+To install the plugin from the Grails plugin repository go to your project's root directory and enter
+
+{{{
+grails install-plugin jaxrs
+}}} 
+
+This will install the latest released version of the grails-jaxrs plugin.
+
+==From a local plugin binary==
+
+If you downloaded or built the plugin as described in [#Getting_the_plugin Getting the plugin] go to your project's root directory and enter
+
+{{{
+grails install-plugin /path/to/grails-jaxrs-<version>.zip
+}}} 
+
+where {{{/path/to}}} needs to be replaced by the absolute or relative path to the {{{grails-jaxrs-<version>.zip}}} file.
