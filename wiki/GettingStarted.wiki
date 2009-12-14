@@ -141,7 +141,7 @@ Start the {{{hello}}} application with
 grails run-app
 }}}
 
-New person objects can be created by POSTing to {{{http://localhost:8080/hello/person}}}. The following request POSTs an XML representation of a person object. 
+New person objects can be created by POSTing to {{{http://localhost:8080/hello/api/person}}}. The following request POSTs an XML representation of a person object. 
 
 {{{
 POST /hello/api/person HTTP/1.1
