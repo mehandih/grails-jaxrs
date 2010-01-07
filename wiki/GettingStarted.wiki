@@ -269,7 +269,7 @@ svn export http://grails-jaxrs.googlecode.com/svn/tags/jaxrs-<version> jaxrs
 
 on the command line where {{{<version>}}} must be replaced by the version of the plugin you're using. This will create a local directory {{{jaxrs}}}, the root directory of the project. If you use a development snapshot checkout the sources from {{{http://grails-jaxrs.googlecode.com/svn/trunk/jaxrs}}}. 
 
-To import the project into Eclipse go to {{{File -> Import... -> General -> Existing Projects Into Workspace}}} and press {{{Next}}}. Then select the project's root directory and click {{{Finish}}}. You should now see a {{{jaxrs}}} project in the package explorer.
+To import the project into Eclipse go to {{{File -> Import... -> General -> Existing Projects Into Workspace}}} and press {{{Next}}}. Then select the project's root directory and click {{{Finish}}}. You should now see a {{{jaxrs}}} project in the package explorer. Importing grails-jaxrs version 0.4 or higher into Eclipse requires an installation of the [http://www.springsource.com/products/sts SpringSource Tool Suite] (STS).
 
 To add this new project as dependency to the {{{hello}}} project, right-click on the {{{hello}}} project and go to {{{Properties -> Java Build Path -> Projects -> Add...}}}. Select the {{{jaxrs}}} project from the list of projects in the workspace and press {{{OK}}}. The compile erros should now disappear.
 
