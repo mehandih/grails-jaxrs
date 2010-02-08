@@ -110,9 +110,8 @@ When you save the changes the plugin re-initializes the JAX-RS runtime (see also
       <method name="GET" id="getTestRepresentation">
         <request>
           <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="name"/>
-      </request>
+        </request>
         <response>
-
           <representation mediaType="text/plain"/>
         </response>
       </method>
