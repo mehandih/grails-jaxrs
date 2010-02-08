@@ -98,6 +98,31 @@ class TestResource {
 
 When you save the changes the plugin re-initializes the JAX-RS runtime (see also console output). Go to {{{http://localhost:8080/hello/api/test?name=Martin}}} and you should see {{{Hello Martin}}} in the browser window. If you additionally want to factor out the greeting logic into a Grails service, refer to the [AdvancedFeatures#Service_injection service injection] section for instructions.
 
+==WADL document==
+
+*Available in version 0.4 or higher*. The WADL document for all resources managed by the plugin can be obtained by sending a GET request to {{{http://localhost:8080/hello/application.wadl}}}. The result should look like
+
+{{{
+<application xmlns="http://research.sun.com/wadl/2006/10">
+  <doc xmlns:jersey="http://jersey.dev.java.net/" jersey:generatedBy="Jersey: 1.1.4.1 11/24/2009 01:30 AM"/>
+  <resources base="http://localhost:8080/hello/">
+    <resource path="/api/test">
+      <method name="GET" id="getTestRepresentation">
+        <request>
+          <param xmlns:xs="http://www.w3.org/2001/XMLSchema" type="xs:string" style="query" name="name"/>
+      </request>
+        <response>
+
+          <representation mediaType="text/plain"/>
+        </response>
+      </method>
+    </resource>
+  </resources>
+</application>
+}}}
+
+Generating WADL documents only works when the plugin is [AdvancedFeatures#JAX-RS_implementation configured] to use Jersey as JAX-RS implementation.
+
 =Scaffolding=
 
 The grails-jaxrs plugin also supports scaffolding. It allows you to generate a RESTful service interface for one or more domain classes based on JAX-RS resource classes. Supported representation formats are XML and JSON. The following sections walk through a simple example. Please note that the scaffolding feature of the plugin is still *early-access*.
