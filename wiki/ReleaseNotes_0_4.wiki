@@ -26,4 +26,4 @@ This release is mainly a bugfix and maintainance release.
 
 ==Upgrade notes==
 
-If you upgrade from grails-jaxrs 0.2, see also the [ReleaseNotes_0_3#Upgrade_notes upgrade notes] of the [ReleaseNotes_0_3 grails-jaxrs 0.3 release].
+If you upgrade from grails-jaxrs 0.2, see also the [ReleaseNotes_0_3 upgrade notes] of the [ReleaseNotes_0_3 grails-jaxrs 0.3 release].
