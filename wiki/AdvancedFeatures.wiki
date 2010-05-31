@@ -9,22 +9,26 @@ Grails domain classes can be used in resource methods as return types and parame
 
 ==Single domain objects==
 
-Let's assume there's a {{{Person}}} domain class and an {{{update}}} resource method  that responds to HTTP PUT operations. The {{{Person}}} domain class has two properties {{{firstName}}} and {{{lastName}}}.
+Let's assume there's a {{{Person}}} domain class and a {{{PersonResource.update}}} method  that responds to HTTP PUT operations. The {{{Person}}} domain class has two properties {{{firstName}}} and {{{lastName}}}.
 
 {{{
+package hello
+
 class Person {
     String firstName
     String lastName
 }
 }}}
 
-The {{{update}}} method is a member of the {{{PersonResource}}} class and 
+The {{{PersonResource.update}}} method
 
   * defines a {{{Person}}} parameter for receiving person data from a client
   * defines a {{{Person}}} return type for sending person data to the client.
   * has annotations that constrain valid {{{Person}}} representation formats to {{{application/xml}}} or {{{application/json}}}.
 
 {{{
+package hello
+
 import javax.ws.rs.Consumes
 import javax.ws.rs.Produces
 import javax.ws.rs.PUT
@@ -89,9 +93,11 @@ This gives better control over e.g. response header creation and still allows fo
 
 ==Domain object collections==
 
-The grails-jaxrs plugin can also handle domain object collections that are returned from resource methods. In the following example, the resource method returns a list of all {{{Person}}} objects in the database.
+The grails-jaxrs plugin can also handle domain object collections that are returned from resource methods. In the following example, the {{{readAll}}} resource method returns a list of all {{{Person}}} objects in the database.
 
 {{{
+package hello
+
 import java.util.List
 import javax.ws.rs.GET
 import javax.ws.rs.Produces
@@ -111,7 +117,7 @@ class PersonCollectionResource {
 }
 }}}
 
-Depending on the {{{Accept}}} request header either an XML or JSON representation is returned. The generic return type ({{{List<Person>}}}) makes it explicit which domain objects are contained in the collection. But one could equally write:
+Depending on the {{{Accept}}} request header either an XML or JSON representation is returned to the client. The generic return type ({{{List<Person>}}}) makes it explicit which domain objects are contained in the collection. But one could equally write:
 
 {{{
     @GET
