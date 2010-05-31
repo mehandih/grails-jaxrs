@@ -575,7 +575,7 @@ Custom mappings replace the default {{{/api/**}}} mapping. If the default mappin
 
 ==JAX-RS implementation==
 
-The grails-jaxrs plugin allows to choose between [https://jersey.dev.java.net/ Jersey] (version 1.1.4.1) and [http://www.restlet.org/ Restlet] (version 2.0-M6) as JAX-RS implementations. By default, Jersey is used. If you want to use Restlet instead, add the following line to {{{grails-app/conf/Config.groovy}}}.
+The grails-jaxrs plugin allows to choose between [https://jersey.dev.java.net/ Jersey] (version 1.2) and [http://www.restlet.org/ Restlet] (version 2.0-RC3) as JAX-RS implementations. By default, Jersey is used. If you want to use Restlet instead, add the following line to {{{grails-app/conf/Config.groovy}}}.
 
 {{{
 org.grails.jaxrs.provider.name='restlet'
