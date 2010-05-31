@@ -63,7 +63,7 @@ class TestResource {
 
 It defines a single method that responds to HTTP GET operations. The HTTP response contains the return value of this method, {{{Test}}} in this example. The content type of the response ({{{Content-Type}}} header) is {{{text/plain}}}. The created resource is ready to use as shown in the next section.
 
-Creating resources via the command line is only one option. An alternative is to create resource files by hand. Any {{{*Resource.groovy}}} file created under {{{grails-app/resources}}} is assumed to be a JAX-RS resource and auto-detected by the grails-jaxrs plugin. These resources are checked for the presence of JAX-RS annotations as defined by JAX-RS 1.0 specification, section 3.1. Resources that aren't properly annotated are ignored by the plugin. 
+Creating resources via the command line is only one option. An alternative is to create resource files by hand. Any {{{*Resource.groovy}}} file created under {{{grails-app/resources}}} is assumed to be a JAX-RS resource and auto-detected by the grails-jaxrs plugin. These resources are checked for the presence of JAX-RS annotations as defined by JAX-RS 1.1 specification, section 3.1. Resources that aren't properly annotated are ignored by the plugin. 
 
 ==Run the application==
 
