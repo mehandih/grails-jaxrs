@@ -139,6 +139,8 @@ grails create-domain-class person
 Open the generated {{{Person.groovy}}} file (under {{{grails-app/domain}}}) and add two properties, {{{firstName}}} and {{{lastName}}}.
 
 {{{
+package hello
+
 class Person {
 
     static constraints = {
@@ -156,10 +158,10 @@ class Person {
 To generate JAX-RS resources that implement the RESTful service interface for that domain class enter
 
 {{{
-grails generate-resources person
+grails generate-resources hello.Person
 }}}
 
-This will generate two resource classes, {{{PersonCollectionResource.groovy}}} and {{{PersonResource.groovy}}} that support HTTP POST, GET, PUT and DELETE operations for creating, reading, updating and deleting {{{Person}}} objects, respectively. {{{PersonCollectionResource.groovy}}} is related to {{{Person}}} lists, {{{PersonResource.groovy}}} is related to individual {{{Person}}} instances. Let's take a look at how to use the generated RESTful service interface.
+This will generate two resource classes, {{{PersonCollectionResource.groovy}}} and {{{PersonResource.groovy}}} (in the {{{hello}}} package) that support HTTP POST, GET, PUT and DELETE operations for creating, reading, updating and deleting {{{Person}}} objects, respectively. {{{PersonCollectionResource.groovy}}} is related to {{{Person}}} lists, {{{PersonResource.groovy}}} is related to individual {{{Person}}} instances. Let's take a look at how to use the generated RESTful service interface.
 
 ==Use the REST API==
 
