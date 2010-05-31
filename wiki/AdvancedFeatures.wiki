@@ -264,14 +264,14 @@ class CustomDomainObjectWriter extends DomainObjectWriterSupport {
                 fullName("${obj.firstName} ${obj.lastName}")
             }
         } else {
-            super.writeToXml(t, entityStream, charset)
+            super.writeToXml(obj, entityStream, charset)
         }
     }
     
 }
 }}}
 
-The custom provider overrides the {{{writeToXml}}} method and generates custom XML using a {{{MarkupBuilder}}}. To test this provider, create an application as described in the [GettingStarted#Scaffolding scaffolding] example, create a folder {{{grails-app/provider}}} and place this custom provider there. The plugin will auto-detect the provider. To create a new person object in the database, send the following request:
+The custom provider overrides the {{{writeToXml}}} method and generates custom XML using a {{{MarkupBuilder}}}. To test this provider, create an application as described in the [GettingStarted#Scaffolding scaffolding] example, create a folder {{{grails-app/provider/hello}}} and place this custom provider there. The plugin will auto-detect the provider. To create a new person object in the database, send the following request:
 
 {{{
 POST /hello/api/person HTTP/1.1
@@ -310,7 +310,7 @@ For simple use cases, the grails-jaxrs plugin additionally provides the abstract
   * {{{org.grails.jaxrs.support.MessageBodyReaderSupport<T>}}}
   * {{{org.grails.jaxrs.support.MessageBodyWriterSupport<T>}}}
 
-These base classes can also be used for classes other than domain classes. Implementors define the supported Java type with a type parameter. For example, the following class is a {{{MessageBodyWriter}}} that supports conversions for the {{{Note}}} class.
+These base classes can also be used for classes other than domain classes. Implementors define the supported Java type with a type parameter. For example, the following class is a {{{MessageBodyWriter}}} that supports conversions for a {{{Note}}} class.
 
 {{{
 @Provider
@@ -328,6 +328,8 @@ class NoteWriter extends MessageBodyWriterSupport<Note> {
 }}}
 
 For details about the {{{MessageBodyWriterSupport}}} and {{{MessageBodyReaderSupport}}} classes refer to the API docs.
+
+Alternatively, you may of course write JAX-RS providers from scratch by using the JAX-RS API directly.
 
 =Using GORM=
 
