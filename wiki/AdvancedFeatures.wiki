@@ -333,13 +333,15 @@ Alternatively, you may of course write JAX-RS providers from scratch by using th
 
 =Using GORM=
 
-This section explains what's happening behind the scenes of the [GettingStarted#Scaffolding scaffolding] example and how [http://grails.org/doc/1.1.2/guide/5.%20Object%20Relational%20Mapping%20(GORM).html GORM] inside JAX-RS resource classes. 
+This section explains what's happening behind the scenes of the [GettingStarted#Scaffolding scaffolding] example and how [http://grails.org/doc/1.3.1/guide/5.%20Object%20Relational%20Mapping%20(GORM).html GORM] inside JAX-RS resource classes. 
 
 =={{{PersonCollectionResource.groovy}}}==
 
 Here's the source code for {{{PersonCollectionResource.groovy}}}.
 
 {{{
+package hello
+
 import static org.grails.jaxrs.response.Responses.*
 
 import javax.ws.rs.Consumes
@@ -377,8 +379,8 @@ It is based based on JSR 311 classes and annotations and uses static methods fro
 
 The {{{PersonCollectionResource}}} class responds to HTTP operations that are releated to person lists. The URL of the person list is {{{http://localhost:8080/hello/api/person}}} where the {{{/api/person}}} path is defined by the class-level {{{@Path('/api/person')}}} annotation. 
 
-  * The {{{create}}} method responds to POST requests by storing a new {{{Person}}} object in the database using [http://grails.org/doc/1.1.2/guide/5.%20Object%20Relational%20Mapping%20(GORM).html GORM]. The XML or JSON request entity is converted by the plugin to a {{{Person}}} domain object and passed to the method via a {{{dto}}} parameter. The conversion is done by a [#Domain_object_providers domain object provider]. The persisted domain object is passed to the {{{created}}} method which creates a response from it using the JAX-RS API (see [http://grails-jaxrs.googlecode.com/svn/trunk/jaxrs/src/groovy/org/grails/jaxrs/response/Responses.groovy source code] for details). The {{{created}}} method constructs a {{{URI}}} for the {{{Location}}} response header from the domain object id. The {{{Person}}} object is set to the {{{Response}}} entity.
-  * The {{{readAll}}} method responds to GET requests and returns a person list. Again we use [http://grails.org/doc/1.1.2/guide/5.%20Object%20Relational%20Mapping%20(GORM).html GORM] to get all person objects from the database and pass that list as argument to the {{{ok}}} method. This method uses the JAX-RS API to create a response (see [http://grails-jaxrs.googlecode.com/svn/trunk/jaxrs/src/groovy/org/grails/jaxrs/response/Responses.groovy link source code] for details).
+  * The {{{create}}} method responds to POST requests by storing a new {{{Person}}} object in the database using [http://grails.org/doc/1.3.1/guide/5.%20Object%20Relational%20Mapping%20(GORM).html GORM]. The XML or JSON request entity is converted by the plugin to a {{{Person}}} domain object and passed to the method via a {{{dto}}} parameter. The conversion is done by a [#Domain_object_providers domain object provider]. The persisted domain object is passed to the {{{created}}} method which creates a response from it using the JAX-RS API (see [http://grails-jaxrs.googlecode.com/svn/trunk/jaxrs/src/groovy/org/grails/jaxrs/response/Responses.groovy source code] for details). The {{{created}}} method constructs a {{{URI}}} for the {{{Location}}} response header from the domain object id. The {{{Person}}} object is set to the {{{Response}}} entity.
+  * The {{{readAll}}} method responds to GET requests and returns a person list. Again we use [http://grails.org/doc/1.3.1/guide/5.%20Object%20Relational%20Mapping%20(GORM).html GORM] to get all person objects from the database and pass that list as argument to the {{{ok}}} method. This method uses the JAX-RS API to create a response (see [http://grails-jaxrs.googlecode.com/svn/trunk/jaxrs/src/groovy/org/grails/jaxrs/response/Responses.groovy link source code] for details).
   * The {{{getResource}}} method creates another JAX-RS resource whenever a request to the URI template {{{http://localhost:8080/hello/api/person/{id} }}} is made. The {{{id}}} path parameter in the template is bound to the {{{id}}} parameter of the {{{getResource}}} method. The created JAX-RS {{{PersonResource}}} is then used by the JAX-RS runtime to handle the request to the person with the given id. 
 
 =={{{PersonResource.groovy}}}==
@@ -386,6 +388,8 @@ The {{{PersonCollectionResource}}} class responds to HTTP operations that are re
 Here's the source code for {{{PersonResource.groovy}}}.
 
 {{{
+package hello
+
 import static org.grails.jaxrs.response.Responses.*
 
 import javax.ws.rs.Consumes
@@ -433,13 +437,13 @@ class PersonResource {
 }
 }}}
 
-The {{{id}}} property is set during construction of the resource and is used for database operations. This class implements the methods {{{read}}}, {{{update}}} and {{{delete}}} to handle GET, PUT and DELETE requests, respectivly. It also uses [http://grails.org/doc/1.1.2/guide/5.%20Object%20Relational%20Mapping%20(GORM).html GORM] for database operations and relies on helper methods of {{{org.grails.jaxrs.response.Responses}}} to create repsonses via the JAX-RS API.
+The {{{id}}} property is set during construction of the resource and is used for database operations. This class implements the methods {{{read}}}, {{{update}}} and {{{delete}}} to handle GET, PUT and DELETE requests, respectivly. It also uses [http://grails.org/doc/1.3.1/guide/5.%20Object%20Relational%20Mapping%20(GORM).html GORM] for database operations and relies on helper methods of {{{org.grails.jaxrs.response.Responses}}} to create repsonses via the JAX-RS API.
 
 If there's no person with given {{{id}}} in the database, a {{{DomainObjectNotFoundException}}} is thrown. This exception class generates a custom {{{404}}} response using the JAX-RS API (see [http://grails-jaxrs.googlecode.com/svn/trunk/jaxrs/src/groovy/org/grails/jaxrs/provider/DomainObjectNotFoundException.groovy source code] for details).
 
 =Applying filters=
 
-[http://grails.org/doc/1.1.2/guide/6.%20The%20Web%20Layer.html#6.6%20Filters Grails filters] can be applied to JAX-RS resources as well. For example, to add a filter for the {{{/api/test/**}}} URL pattern, create a file {{{TestFilters.groovy}}} under {{{grails-app/conf}}} with a content like
+[http://grails.org/doc/1.3.1/guide/6.%20The%20Web%20Layer.html#6.6%20Filters Grails filters] can be applied to JAX-RS resources as well. For example, to add a filter for the {{{/api/test/**}}} URL pattern, create a file {{{TestFilters.groovy}}} under {{{grails-app/conf}}} with a content like
 
 {{{
 class TestFilters {
@@ -464,6 +468,8 @@ class TestFilters {
 Services can be auto-injected into resource and [#Entity_providers provider] objects by name. Assuming we have a service class named {{{TestService.groovy}}} in {{{grails-app/services}}}
 
 {{{
+package hello
+
 class TestService {
 
      String greet(String name) {
@@ -476,6 +482,8 @@ class TestService {
 then we can auto-inject it by defining a {{{testService}}} property like in the following resource class.
 
 {{{
+package hello
+
 // imports omitted ...
 
 @Path('/api/test')
