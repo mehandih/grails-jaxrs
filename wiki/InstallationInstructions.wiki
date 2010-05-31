@@ -10,7 +10,7 @@ Using the grails-jaxrs plugin requires a Grails 1.1.1 (or higher) installation. 
 || *Grails version* || *grails-jaxrs version* ||
 ||1.1.1||0.1 - 0.3||
 ||1.1.2||0.1 - 0.3||
-||>= 1.2.0||0.4 (development snapshot)||
+||1.2.0 or higher||0.4 (development snapshot)||
 
 The latest stable version of grails-jaxrs is 0.3 and can be obtained from the [http://www.grails.org/plugin/home Grails Plugin Repository]. Version 0.4 is not released yet and must be [#Sources checked out from Subversion] and [#From_a_local_plugin_binary installed manually].
 
