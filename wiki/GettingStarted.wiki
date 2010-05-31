@@ -289,9 +289,9 @@ The [AdvancedFeatures#Using_GORM using GORM section] of the [AdvancedFeatures ad
 
 =Using Eclipse=
 
-*Important notice*: Importing grails-jaxrs version 0.4 or higher into Eclipse additionally requires an installation of the [http://www.springsource.com/products/sts SpringSource Tool Suite] (STS).
+*Prerequisites*: Eclipse 3.5.x or higher and an installation of the [http://www.springsource.com/products/sts SpringSource Tool Suite] (STS).
 
-Using the {{{hello}}} project with the grails-jaxrs plugin in Eclipse requires a bit more than [http://grails.org/Eclipse+IDE+Integration just importing] the {{{hello}}} project. After import, the grails-jaxrs classes are not on the classpath of the project, therefore, you'll see compile errors for generated JAX-RS resources. The best way to resolve the compile errors is to import the grails-jaxrs plugin project as a separate project in Eclipse and reference that project from the {{{hello}}} project. 
+Using the {{{hello}}} project with the grails-jaxrs plugin in Eclipse requires a bit more than just importing the {{{hello}}} project. After import, the grails-jaxrs classes are not on the classpath of the project, therefore, you'll see compile errors for generated JAX-RS resources. The best way to resolve the compile errors is to import the grails-jaxrs plugin project as a separate project in Eclipse and reference that project from the {{{hello}}} project. 
 
 To checkout a released version of the grails-jaxrs project enter 
 
