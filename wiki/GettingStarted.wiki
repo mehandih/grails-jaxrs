@@ -39,9 +39,11 @@ To create a JAX-RS resource named {{{test}}} enter
 grails create-resource test
 }}}
 
-This will create a {{{TestResource.groovy}}} file under {{{grails-app/resources}}} and a {{{TestResourceTests.groovy}}} file under {{{test/unit}}}. The {{{TestResourceTests.groovy}}} file is a unit test template. The {{{TestResource.groovy}}} file is the generated JAX-RS resource. 
+This will create a {{{TestResource.groovy}}} file under {{{grails-app/resources}}} and a {{{TestResourceTests.groovy}}} file under {{{test/unit}}}. The {{{TestResourceTests.groovy}}} file is a unit test template. The {{{TestResource.groovy}}} file is the generated JAX-RS resource. Both files are in the package {{{hello}}}.
 
 {{{
+package hello
+
 import javax.ws.rs.GET
 import javax.ws.rs.Path
 import javax.ws.rs.Produces
