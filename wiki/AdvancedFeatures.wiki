@@ -176,7 +176,7 @@ The behaviour of domain object providers can be customized as described in the [
 
 XML providers are superseded by [#Domain_object_providers domain object providers] since grails-jaxrs version 0.3.
 
-  * {{{org.grails.jaxrs.provider.XMLReader}}} converts an XML representation of a domain object into a {{{java.util.Map}}}. This map can be for constructing domain objects.
+  * {{{org.grails.jaxrs.provider.XMLReader}}} converts an XML representation of a domain object into a {{{java.util.Map}}}. This map can be used for constructing domain objects.
   * {{{org.grails.jaxrs.provider.XMLWriter}}} converts an {{{grails.converters.XML}}} object into an XML representation. 
 
 Usage example:
@@ -203,7 +203,7 @@ class PersonResource {
 
 JSON providers are superseded by [#Domain_object_providers domain object providers] since grails-jaxrs version 0.3.
 
-  * {{{org.grails.jaxrs.provider.JSONReader}}} converts a JSON representation of a domain object into a {{{java.util.Map}}}. This map can be for constructing domain objects.
+  * {{{org.grails.jaxrs.provider.JSONReader}}} converts a JSON representation of a domain object into a {{{java.util.Map}}}. This map can be used for constructing domain objects.
   * {{{org.grails.jaxrs.provider.JSONWriter}}} converts an {{{grails.converters.JSON}}} object into a JSON representation. 
 
 Usage example:
@@ -246,6 +246,8 @@ org.grails.jaxrs.dowriter.disable=true
 In the following example a custom domain object writer is implemented, therefore, only the default domain object writer needs to be disabled. A custom XML creation should be done for the {{{Person}}} domain class (see [GettingStarted#Scaffolding scaffolding] example), for all other classes the default XML creation should occur. Here's the custom provider.
 
 {{{
+package hello
+
 import javax.ws.rs.ext.Provider
 import groovy.xml.MarkupBuilder
 import org.grails.jaxrs.support.DomainObjectWriterSupport
