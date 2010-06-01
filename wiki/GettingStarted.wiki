@@ -78,6 +78,8 @@ on the comamnd line. Then open a browser window and go to {{{http://localhost:80
 The grails-jaxrs plugin also support code changes at runtime i.e. without restarting the server. To demonstrate that we let add a {{{name}}} parameter to the {{{getTestRepresentation}}} method and bind it to a {{{name}}} query parameter using the JAX-RS {{{@QueryParam}}} annotation. The HTTP response entity will vary depending on the {{{name}}} query parameter. Here's the modified source code.
 
 {{{
+package hello
+
 import javax.ws.rs.GET
 import javax.ws.rs.Path
 import javax.ws.rs.Produces
@@ -185,7 +187,7 @@ Content-Length: 82
 }}}
 
 
-The {{{Content-Type}}} header must be set either to {{{application/xml}}} or {{{text/xml}}}. After sending the request, the server creates a new person object in the database and returns an XML representation of it. 
+The {{{Content-Type}}} header must be set either to {{{application/xml}}}. After sending the request, the server creates a new person object in the database and returns an XML representation of it. 
 
 {{{
 HTTP/1.1 201 Created
