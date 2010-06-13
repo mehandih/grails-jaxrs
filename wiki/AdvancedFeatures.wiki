@@ -609,3 +609,13 @@ org.grails.jaxrs.dowriter.disable=true
 }}}
 
 This is useful in situations where applications implement [#Custom_providers custom providers]. Another domain object provider configuration property, {{{org.grails.jaxrs.dowriter.require.generic.collections}}}, is explained in the [#Domain_object_collections domain object collections] section.
+
+==Additional providers==
+
+By default the grails-jaxrs plugin scans the {{{grails-app/providers}}} directory for custom providers. JAX-RS provider implementations located elsewhere (e.g. in 3rd party libraries) are ignored. This can be changed by defining _extra paths_ where the plugin should scan for additional providers. For example by adding the following to {{{grails-app/conf/Config.groovy}}}
+
+{{{
+org.grails.jaxrs.provider.extra.paths='com.foo;com.bar'
+}}}
+
+the plugin additionally scans the packages {{{com.foo}}} and {{{com.bar}}} for providers. Please note that this feature is only available when the plugin is configured to use Jersey.
