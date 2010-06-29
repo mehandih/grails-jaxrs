@@ -508,7 +508,6 @@ This section describes how to get the [GettingStarted#Hello_world hello world] e
   * Create a Grails application and JAX-RS resource as described in the [GettingStarted#Hello_world hello world] example.
   * Add the following entries to {{{grails-app/conf/Config.groovy}}}
 {{{
-org.grails.jaxrs.url.mappings=['/test']
 org.grails.jaxrs.provider.name='restlet'
 // replace <application-name> with the 
 // actual App Engine application name
