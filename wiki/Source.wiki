@@ -2,11 +2,7 @@
 
 = Repositories =
 
-Since version 0.5 the grails-jaxrs sources (including the full project history) have been moved to a new [http://github.com/krasserm/grails-jaxrs GitHub respository]. Branches and tags up to version 0.4 are still available in the project's old [http://code.google.com/p/grails-jaxrs/source/browse/ Subversion repository].
-
-=Command-line access=
-
-To clone the grails-jaxrs repository run
+Since version 0.5 the grails-jaxrs sources (including the full project history) have been moved to a new [http://github.com/krasserm/grails-jaxrs GitHub respository]. To clone this repository run
 
 {{{
 git clone git://github.com/krasserm/grails-jaxrs.git
@@ -17,3 +13,5 @@ from the command line. Developers with read/write access to the public repositor
 {{{
 git clone git@github.com:krasserm/grails-jaxrs.git
 }}}
+
+Branches and tags up to version 0.4 are still available in the project's old [http://code.google.com/p/grails-jaxrs/source/browse/ Subversion repository].
