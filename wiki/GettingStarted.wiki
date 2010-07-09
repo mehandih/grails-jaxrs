@@ -296,10 +296,10 @@ Using the {{{hello}}} project with the grails-jaxrs plugin in Eclipse requires a
 To checkout a released version of the grails-jaxrs project enter 
 
 {{{
-svn export http://grails-jaxrs.googlecode.com/svn/tags/jaxrs-<version> jaxrs
+git clone git://github.com/krasserm/grails-jaxrs.git
 }}}
 
-on the command line where {{{<version>}}} must be replaced by the version of the plugin you're using. This will create a local directory {{{jaxrs}}}, the root directory of the project. If you use a development snapshot checkout the sources from {{{http://grails-jaxrs.googlecode.com/svn/trunk/jaxrs}}}. 
+on the command line. This will create a local repository {{{grails-jaxrs}}}, which is the root directory of the project. Then switch the repository to a tagged version or leave the master branch if you want to use the latest development version.
 
 To import the project into Eclipse go to {{{File -> Import... -> General -> Existing Projects Into Workspace}}} and press {{{Next}}}. Then select the project's root directory and click {{{Finish}}}. You should now see a {{{jaxrs}}} project in the package explorer. 
 
