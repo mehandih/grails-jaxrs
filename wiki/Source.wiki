@@ -2,7 +2,7 @@
 
 = Repositories =
 
-Since version 0.5 the [http://github.com/krasserm/grails-jaxrs grails-jaxrs sources] (including the full project history) are managed at [http://github.com/ GitHub]. Branches and tags up to version 0.4 are still available in the project's [http://code.google.com/p/grails-jaxrs/source/browse/ Subversion reprository].
+Since version 0.5 the [http://github.com/krasserm/grails-jaxrs grails-jaxrs sources] (including the full project history) are managed at [http://github.com/ GitHub]. Branches and tags up to version 0.4 are still available in the project's old [http://code.google.com/p/grails-jaxrs/source/browse/ Subversion reprository].
 
 =Command-line access=
 
