@@ -621,7 +621,7 @@ the plugin additionally scans the packages {{{com.foo}}} and {{{com.bar}}} for p
 
 =Integration testing=
 
-For integration testing JAX-RS resources and providers you can extend the [https://github.com/krasserm/grails-jaxrs/blob/master/src/groovy/org/grails/jaxrs/itest/IntegrationTestCase.groovy org.grails.jaxrs.itest.IntegrationTestCase] class. The following example is an integration test for the JAX-RS resources created in the [GettingStarted#Scaffolding scaffolding] section. 
+For integration testing JAX-RS resources and providers you can extend the [https://github.com/krasserm/grails-jaxrs/blob/master/src/groovy/org/grails/jaxrs/itest/IntegrationTestCase.groovy IntegrationTestCase] class. The following example is an integration test for the JAX-RS resources created in the [GettingStarted#Scaffolding scaffolding] section. 
 
 This test 
 
@@ -664,7 +664,15 @@ For sending requests, the {{{sendRequest}}} method, defined in {{{IntegrationTes
 
 Tests that extend {{{IntegrationTestCase}}} inherit the following behavior.
 
+  * Initialization and start of a grails-jaxrs application for integration testing with (optional) auto-detection of user-defined JAX-RS resources and providers as well as domain classes.
   * JAX-RS resources in {{{grails-app/resources}}} are automatically detected and available for integration testing. Auto-detection can be turned off by overriding the {{{isAutoDetectJaxrsClasses}}} method to return {{{false}}}.
   * JAX-RS providers in {{{grails-app/providers}}} are automatically detected and available for integration testing. Auto-detection can be turned off by overriding the {{{isAutoDetectJaxrsClasses}}} method to return {{{false}}}.
   * Grails domain classes in {{{grails-app/domain}}} are automatically detected and available for integration testing. Auto-detection can be turned off by overriding the {{{isAutoDetectDomainClasses}}} method to return {{{false}}}.
-  * ...
+
+Additional configuration option include.
+
+  * JAX-RS resources and providers that are not auto-detected can be added to integration tests by overriding the {{{getJaxrsClasses}}} method.
+  * Domain classes that are not auto-detected can be added to integration tests by overriding the {{{getDomainClasses}}} method.
+  * Addition Spring application context XML files can be added to the integration test by overriding the {{{getContextLocations}}} method.
+
+The grails-jaxrs plugin is using this integration test framework for self-testing as well, such as in [https://github.com/krasserm/grails-jaxrs/blob/master/test/integration/org/grails/jaxrs/itest/JaxrsControllerIntegrationTests.groovy JaxrsControllerIntegrationTests]
