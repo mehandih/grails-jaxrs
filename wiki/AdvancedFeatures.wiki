@@ -618,3 +618,7 @@ org.grails.jaxrs.provider.extra.paths='com.foo;com.bar'
 }}}
 
 the plugin additionally scans the packages {{{com.foo}}} and {{{com.bar}}} for providers. Please note that this feature is only available when the plugin is configured to use Jersey.
+
+=Integration testing=
+
+...
