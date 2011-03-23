@@ -627,6 +627,8 @@ For integration testing JAX-RS resources and providers, you should extend the pl
   * retrieves a list of persons in JSON format by sending a GET request to {{{/api/person}}}.
 
 {{{
+package hello
+
 import org.grails.jaxrs.itest.IntegrationTestCase
 import org.junit.Test
 
