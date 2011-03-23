@@ -1,6 +1,6 @@
-#summary Release notes for grails-jaxrs version 0.4
+#summary Release notes for grails-jaxrs version 0.5-m1a
 
-=Release notes for grails-jaxrs version 0.5-m1=
+=Release notes for grails-jaxrs version 0.5-m1a=
 
 ==Download==
 
