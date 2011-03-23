@@ -17,7 +17,7 @@
 ===Additions===
   * [http://code.google.com/p/grails-jaxrs/wiki/AdvancedFeatures#Integration_testing New integration test framework]
 
-===Enahncements===
+===Enhancements===
   * [http://code.google.com/p/grails-jaxrs/issues/detail?id=22 Support for configuring Jersey with additional provider paths]
   * [http://code.google.com/p/grails-jaxrs/issues/detail?id=32 Switch to Grails' dependency management mechanism]
   * [http://code.google.com/p/grails-jaxrs/issues/detail?id=33 JaxrsController moved to package org.grails.jaxrs]
