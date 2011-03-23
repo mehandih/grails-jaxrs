@@ -624,7 +624,9 @@ the plugin additionally scans the packages {{{com.foo}}} and {{{com.bar}}} for p
 For integration testing JAX-RS resources and providers, you should extend the plugin's [https://github.com/krasserm/grails-jaxrs/blob/master/src/groovy/org/grails/jaxrs/itest/IntegrationTestCase.groovy IntegrationTestCase] class. The following example is an integration test for the JAX-RS resources created in the [GettingStarted#Scaffolding scaffolding] section. This test 
 
   * creates a new {{{Person}}} by POSTing a JSON representation of that person to {{{/api/person}}} and then
-  * retrieves a list of persons in JSON format by sending a GET request to {{{/api/person}}}.
+  * retrieves a list of persons in JSON format by sending a GET request to {{{/api/person}}}
+
+It is located under {{{test/integration}}} in package {{{hello}}}.
 
 {{{
 package hello
