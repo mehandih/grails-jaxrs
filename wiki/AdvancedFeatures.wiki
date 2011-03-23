@@ -621,4 +621,38 @@ the plugin additionally scans the packages {{{com.foo}}} and {{{com.bar}}} for p
 
 =Integration testing=
 
+For integration testing JAX-RS resources and providers you need to extend the {{{org.grails.jaxrs.itest.IntegrationTestCase}}} class. The following example is an integration test for the JAX-RS resources created in the [GettingStarted#Scaffolding scaffolding] section.
+
+{{{
+import org.grails.jaxrs.itest.IntegrationTestCase
+import org.junit.Test
+
+import static org.junit.Assert.*
+
+class PersonIntegrationTest extends IntegrationTestCase {
+
+    @Test
+    void testPostAndGet() {
+        def headers = ['Content-Type':'application/json', 'Accept':'application/json']
+        def content = '{"class":"hello.Person","firstName":"Sam","lastName":"Hill"}'
+        def expected = '{"class":"hello.Person","id":1,"firstName":"Sam","lastName":"Hill"}'
+        
+        // create new person
+        sendRequest('/api/person', 'POST', headers, content.bytes)
+        
+        assertEquals(201, response.status)
+        assertEquals(expected, response.contentAsString)
+        assertTrue(response.getHeader('Content-Type').startsWith('application/json'))
+        
+        // get list of persons
+        sendRequest('/api/person', 'GET', headers)
+        
+        assertEquals(200, response.status)
+        assertEquals("[${expected}]".toString(), response.contentAsString)
+        assertTrue(response.getHeader('Content-Type').startsWith('application/json'))
+    }
+    
+}
+}}}
+
 ...
