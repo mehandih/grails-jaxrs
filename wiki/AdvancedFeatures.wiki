@@ -621,7 +621,7 @@ the plugin additionally scans the packages {{{com.foo}}} and {{{com.bar}}} for p
 
 =Integration testing=
 
-For integration testing JAX-RS resources and providers you can extend the {{{org.grails.jaxrs.itest.IntegrationTestCase}}} class. The following example is an integration test for the JAX-RS resources created in the [GettingStarted#Scaffolding scaffolding] section. 
+For integration testing JAX-RS resources and providers you can extend the [https://github.com/krasserm/grails-jaxrs/blob/master/src/groovy/org/grails/jaxrs/itest/IntegrationTestCase.groovy org.grails.jaxrs.itest.IntegrationTestCase] class. The following example is an integration test for the JAX-RS resources created in the [GettingStarted#Scaffolding scaffolding] section. 
 
 This test 
 
