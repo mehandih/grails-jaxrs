@@ -621,11 +621,9 @@ the plugin additionally scans the packages {{{com.foo}}} and {{{com.bar}}} for p
 
 =Integration testing=
 
-For integration testing JAX-RS resources and providers you can extend the [https://github.com/krasserm/grails-jaxrs/blob/master/src/groovy/org/grails/jaxrs/itest/IntegrationTestCase.groovy IntegrationTestCase] class. The following example is an integration test for the JAX-RS resources created in the [GettingStarted#Scaffolding scaffolding] section. 
+For integration testing JAX-RS resources and providers, you should extend the plugin's [https://github.com/krasserm/grails-jaxrs/blob/master/src/groovy/org/grails/jaxrs/itest/IntegrationTestCase.groovy IntegrationTestCase] class. The following example is an integration test for the JAX-RS resources created in the [GettingStarted#Scaffolding scaffolding] section. This test 
 
-This test 
-
-  * creates a {{{Person}}} by POSTing a JSON representation of that person to {{{/api/person}}} and then
+  * creates a new {{{Person}}} by POSTing a JSON representation of that person to {{{/api/person}}} and then
   * retrieves a list of persons in JSON format by sending a GET request to {{{/api/person}}}.
 
 {{{
@@ -673,6 +671,7 @@ Additional configuration options include.
 
   * JAX-RS resources and providers that are not auto-detected can be added to integration tests by overriding the {{{getJaxrsClasses}}} method.
   * Domain classes that are not auto-detected can be added to integration tests by overriding the {{{getDomainClasses}}} method.
-  * Addition Spring application context XML files can be added to the integration test by overriding the {{{getContextLocations}}} method.
+  * Additional Spring application context XML files can be added to the integration test by overriding the {{{getContextLocations}}} method.
+  * By default, Jersey is used as JAX-RS implementation. Other JAX-RS implementations can be specified by overriding the {{{getJaxrsImplementation}}} method.
 
-The grails-jaxrs plugin is using this integration test framework for self-testing as well, such as in [https://github.com/krasserm/grails-jaxrs/blob/master/test/integration/org/grails/jaxrs/itest/JaxrsControllerIntegrationTests.groovy JaxrsControllerIntegrationTests]
+The grails-jaxrs plugin itself is using this test framework for self-testing, such as in [https://github.com/krasserm/grails-jaxrs/blob/master/test/integration/org/grails/jaxrs/itest/JaxrsControllerIntegrationTests.groovy JaxrsControllerIntegrationTests].
