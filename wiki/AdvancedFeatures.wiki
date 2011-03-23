@@ -621,7 +621,12 @@ the plugin additionally scans the packages {{{com.foo}}} and {{{com.bar}}} for p
 
 =Integration testing=
 
-For integration testing JAX-RS resources and providers you need to extend the {{{org.grails.jaxrs.itest.IntegrationTestCase}}} class. The following example is an integration test for the JAX-RS resources created in the [GettingStarted#Scaffolding scaffolding] section.
+For integration testing JAX-RS resources and providers you can extend the {{{org.grails.jaxrs.itest.IntegrationTestCase}}} class. The following example is an integration test for the JAX-RS resources created in the [GettingStarted#Scaffolding scaffolding] section. 
+
+This test 
+
+  * creates a {{{Person}}} by POSTing a JSON representation of that person to {{{/api/person}}} and then
+  * retrieves a list of persons in JSON format by sending a GET request to {{{/api/person}}}.
 
 {{{
 import org.grails.jaxrs.itest.IntegrationTestCase
@@ -655,4 +660,11 @@ class PersonIntegrationTest extends IntegrationTestCase {
 }
 }}}
 
-...
+For sending requests, the {{{sendRequest}}} method, defined in {{{IntegrationTestCase}}}, is used. The returned response is accessible via the {{{response}}} variable.
+
+Tests that extend {{{IntegrationTestCase}}} inherit the following behavior.
+
+  * JAX-RS resources in {{{grails-app/resources}}} are automatically detected and available for integration testing. Auto-detection can be turned off by overriding the {{{isAutoDetectJaxrsClasses}}} method to return {{{false}}}.
+  * JAX-RS providers in {{{grails-app/providers}}} are automatically detected and available for integration testing. Auto-detection can be turned off by overriding the {{{isAutoDetectJaxrsClasses}}} method to return {{{false}}}.
+  * Grails domain classes in {{{grails-app/domain}}} are automatically detected and available for integration testing. Auto-detection can be turned off by overriding the {{{isAutoDetectDomainClasses}}} method to return {{{false}}}.
+  * ...
