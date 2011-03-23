@@ -4,7 +4,7 @@
 
 ==Download==
 
-  * [http://code.google.com/p/grails-jaxrs/downloads/detail?name=grails-jaxrs-0.5-m1.zip grails-jaxrs-0.5-m1]
+  * [http://code.google.com/p/grails-jaxrs/downloads/detail?name=grails-jaxrs-0.5-m1a.zip grails-jaxrs-0.5-m1a]
   * See also [InstallationInstructions installation instructions]
 
 ==Documentation==
