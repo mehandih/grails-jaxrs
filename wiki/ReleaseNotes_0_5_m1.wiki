@@ -1,0 +1,38 @@
+#summary Release notes for grails-jaxrs version 0.4
+
+=Release notes for grails-jaxrs version 0.5-m1=
+
+==Download==
+
+  * [http://code.google.com/p/grails-jaxrs/downloads/detail?name=grails-jaxrs-0.5-m1.zip grails-jaxrs-0.5-m1]
+  * See also [InstallationInstructions installation instructions]
+
+==Documentation==
+
+  * [GettingStarted Getting started]
+  * [AdvancedFeatures Advanced features]
+
+==What's new==
+
+===Additions===
+  * [http://code.google.com/p/grails-jaxrs/wiki/AdvancedFeatures#Integration_testing New integration test framework]
+
+===Enahncements===
+  * [http://code.google.com/p/grails-jaxrs/issues/detail?id=22 Support for configuring Jersey with additional provider paths]
+  * [http://code.google.com/p/grails-jaxrs/issues/detail?id=32 Switch to Grails' dependency management mechanism]
+  * [http://code.google.com/p/grails-jaxrs/issues/detail?id=33 JaxrsController moved to package org.grails.jaxrs]
+
+===Updates===
+  * Upgrade to Grails 1.3.7
+  * Upgrade to Jersey 1.5
+
+===Fixes===
+  * [http://code.google.com/p/grails-jaxrs/issues/detail?id=26& Response Content-Type text/html eaten by Grails]
+
+==Known issues==
+
+  * There's a bug ([http://restlet.tigris.org/issues/show_bug.cgi?id=971 issue 971]) in Restlet 2.0-RC3 that forces implementors of {{{MessageBodyReader}}} and {{{MessageBodyWriter}}} to *directly* implement these interfaces. Extending a class that implements these interfaces doesn't work. Restlet will ignore the provider in this case. An upgrade to the current Restlet 2.0.5 release is planned for the next milestone or release candidate.
+
+==Upgrade notes==
+
+If you upgrade from grails-jaxrs 0.3, see also the [ReleaseNotes_0_4 release notes of the grails-jaxrs 0.4 release].
