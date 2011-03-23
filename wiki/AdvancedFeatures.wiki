@@ -669,7 +669,7 @@ Tests that extend {{{IntegrationTestCase}}} inherit the following behavior.
   * JAX-RS providers in {{{grails-app/providers}}} are automatically detected and available for integration testing. Auto-detection can be turned off by overriding the {{{isAutoDetectJaxrsClasses}}} method to return {{{false}}}.
   * Grails domain classes in {{{grails-app/domain}}} are automatically detected and available for integration testing. Auto-detection can be turned off by overriding the {{{isAutoDetectDomainClasses}}} method to return {{{false}}}.
 
-Additional configuration option include.
+Additional configuration options include.
 
   * JAX-RS resources and providers that are not auto-detected can be added to integration tests by overriding the {{{getJaxrsClasses}}} method.
   * Domain classes that are not auto-detected can be added to integration tests by overriding the {{{getDomainClasses}}} method.
