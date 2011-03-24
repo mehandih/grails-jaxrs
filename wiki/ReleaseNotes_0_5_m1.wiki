@@ -1,10 +1,10 @@
-#summary Release notes for grails-jaxrs version 0.5-m1a
+#summary Release notes for grails-jaxrs version 0.5-m1
 
-=Release notes for grails-jaxrs version 0.5-m1a=
+=Release notes for grails-jaxrs version 0.5-m1=
 
 ==Download==
 
-  * [http://code.google.com/p/grails-jaxrs/downloads/detail?name=grails-jaxrs-0.5-m1a.zip grails-jaxrs-0.5-m1a]
+  * [http://code.google.com/p/grails-jaxrs/downloads/detail?name=grails-jaxrs-0.5-m1.zip grails-jaxrs-0.5-m1]
   * See also [InstallationInstructions installation instructions]
 
 ==Documentation==
