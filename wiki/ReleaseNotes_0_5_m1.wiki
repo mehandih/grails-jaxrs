@@ -27,7 +27,7 @@
   * Upgrade to Jersey 1.5
 
 ===Fixes===
-  * [http://code.google.com/p/grails-jaxrs/issues/detail?id=26& Response Content-Type text/html eaten by Grails]
+  * [http://code.google.com/p/grails-jaxrs/issues/detail?id=26& Responses with Content-Type text/html eaten by Grails]
 
 ==Known issues==
 
