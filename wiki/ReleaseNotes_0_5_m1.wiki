@@ -4,7 +4,7 @@
 
 ==Download==
 
-  * [http://code.google.com/p/grails-jaxrs/downloads/detail?name=grails-jaxrs-0.5-m1.zip grails-jaxrs-0.5-m1]
+  * [http://code.google.com/p/grails-jaxrs/downloads/detail?name=grails-jaxrs-0.5-m1-p1.zip grails-jaxrs-0.5-m1-p1]
   * See also [InstallationInstructions installation instructions]
 
 ==Documentation==
@@ -28,6 +28,7 @@
 
 ===Fixes===
   * [http://code.google.com/p/grails-jaxrs/issues/detail?id=26& Responses with Content-Type text/html eaten by Grails]
+  * [http://code.google.com/p/grails-jaxrs/issues/detail?id=37 Service injection into resources doesn't work in integration tests]
 
 ==Known issues==
 
