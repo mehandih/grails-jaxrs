@@ -669,12 +669,10 @@ Tests that extend {{{IntegrationTestCase}}} inherit the following behavior.
   * Initialization and start of a grails-jaxrs application for integration testing with (optional) auto-detection of user-defined JAX-RS resources and providers as well as domain classes.
   * JAX-RS resources in {{{grails-app/resources}}} are automatically detected and available for integration testing. Auto-detection can be turned off by overriding the {{{isAutoDetectJaxrsClasses}}} method to return {{{false}}}.
   * JAX-RS providers in {{{grails-app/providers}}} are automatically detected and available for integration testing. Auto-detection can be turned off by overriding the {{{isAutoDetectJaxrsClasses}}} method to return {{{false}}}.
-  * Grails domain classes in {{{grails-app/domain}}} are automatically detected and available for integration testing. Auto-detection can be turned off by overriding the {{{isAutoDetectDomainClasses}}} method to return {{{false}}}.
 
 Additional configuration options include.
 
   * JAX-RS resources and providers that are not auto-detected can be added to integration tests by overriding the {{{getJaxrsClasses}}} method.
-  * Domain classes that are not auto-detected can be added to integration tests by overriding the {{{getDomainClasses}}} method.
   * Additional Spring application context XML files can be added to the integration test by overriding the {{{getContextLocations}}} method.
   * By default, Jersey is used as JAX-RS implementation. Other JAX-RS implementations can be specified by overriding the {{{getJaxrsImplementation}}} method.
 
