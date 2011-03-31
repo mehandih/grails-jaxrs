@@ -253,6 +253,7 @@ import groovy.xml.MarkupBuilder
 import org.grails.jaxrs.support.DomainObjectWriterSupport
 
 @Provider
+@Produces(['text/xml', 'application/xml', 'text/x-json', 'application/json'])
 class CustomDomainObjectWriter extends DomainObjectWriterSupport {
 
     protected Object writeToXml(Object obj, OutputStream entityStream, String charset) {
