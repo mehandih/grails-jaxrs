@@ -618,7 +618,22 @@ By default the grails-jaxrs plugin scans the {{{grails-app/providers}}} director
 org.grails.jaxrs.provider.extra.paths='com.foo;com.bar'
 }}}
 
-the plugin additionally scans the packages {{{com.foo}}} and {{{com.bar}}} for providers. Please note that this feature is only available when the plugin is configured to use Jersey.
+the plugin additionally scans the packages {{{com.foo}}} and {{{com.bar}}} for providers. Please note that this feature is only available when the plugin is configured to use Jersey. You can also define extra paths by setting the corresponding init parameter (see also [#Init_parameters next section]).
+
+{{{
+org.grails.jaxrs.provider.init.parameters=['com.sun.jersey.config.property.packages':'com.foo;com.bar']
+}}}
+
+==Init parameters==
+
+Init parameters for the servlet of the underlying JAX-RS implementation can be set via the {{{org.grails.jaxrs.provider.init.parameters}}} configuration property in {{{grails-app/conf/Config.groovy}}}, as in the following example.
+
+{{{
+org.grails.jaxrs.provider.init.parameters=[
+  'com.sun.jersey.config.property.packages':'com.foo;com.bar',
+  'another.key':'another.value'
+]
+}}}
 
 =Integration testing=
 
