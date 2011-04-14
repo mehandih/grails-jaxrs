@@ -678,7 +678,13 @@ class PersonIntegrationTest extends IntegrationTestCase {
 }
 }}}
 
-For sending requests, the {{{sendRequest}}} method, defined in {{{IntegrationTestCase}}}, is used. The returned response is accessible via the {{{response}}} variable.
+For sending requests, the {{{sendRequest}}} method, defined in {{{IntegrationTestCase}}}, is used. The returned response is accessible via the {{{response}}} variable. Query parameters can be set with
+
+{{{
+controller.request.queryString='param=value'
+}}}
+
+prior to calling {{{sendRequest}}}.
 
 Tests that extend {{{IntegrationTestCase}}} inherit the following behavior.
 
