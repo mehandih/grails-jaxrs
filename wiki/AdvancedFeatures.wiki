@@ -248,6 +248,7 @@ In the following example a custom domain object writer is implemented, therefore
 {{{
 package hello
 
+import javax.ws.rs.Produces
 import javax.ws.rs.ext.Provider
 import groovy.xml.MarkupBuilder
 import org.grails.jaxrs.support.DomainObjectWriterSupport
