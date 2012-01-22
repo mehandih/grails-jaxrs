@@ -1,0 +1,31 @@
+#summary Release notes for grails-jaxrs version 0.6
+
+=Release notes for grails-jaxrs version 0.6=
+
+==Download==
+
+  * [http://code.google.com/p/grails-jaxrs/downloads/detail?name=grails-jaxrs-0.6.zip grails-jaxrs-0.6]
+  * See also [InstallationInstructions installation instructions]
+
+==Documentation==
+
+  * [GettingStarted Getting started]
+  * [AdvancedFeatures Advanced features]
+
+==What's new==
+
+===Upgrades===
+  * Upgrade to Grails 2.0.0
+  * Upgrade to Jersey 1.8
+
+===Enhancements===
+  * [http://code.google.com/p/grails-jaxrs/issues/detail?id=38 Allow applications to configure init parameters for the JerseyServlet]
+  * [http://code.google.com/p/grails-jaxrs/issues/detail?id=43 Separate service class used by generated resources]
+  * [http://code.google.com/p/grails-jaxrs/issues/detail?id=48 Transaction boundaries in generated resource code]
+  * [http://code.google.com/p/grails-jaxrs/issues/detail?id=49 Support deep object conversion in domain object providers]
+
+
+===Fixes===
+  * [http://code.google.com/p/grails-jaxrs/issues/detail?id=42 Support for alphanumeric domain object identifiers]
+  * [http://code.google.com/p/grails-jaxrs/issues/detail?id=45 POST method doesn't work]
+  * [http://code.google.com/p/grails-jaxrs/issues/detail?id=51 java.lang.IllegalStateException: getOutputStream() has already been called for this response]
