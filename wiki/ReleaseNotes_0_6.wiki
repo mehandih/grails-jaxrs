@@ -2,6 +2,12 @@
 
 =Release notes for grails-jaxrs version 0.6=
 
+==Installation==
+
+{{{
+grails install-plugin jaxrs
+}}}
+
 ==Download==
 
   * [http://code.google.com/p/grails-jaxrs/downloads/detail?name=grails-jaxrs-0.6.zip grails-jaxrs-0.6]
