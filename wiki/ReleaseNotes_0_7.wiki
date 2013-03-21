@@ -2,6 +2,8 @@
 
 =Release notes for grails-jaxrs version 0.7=
 
+_Work in progress ..._
+
 ==Installation==
 
 {{{
@@ -22,15 +24,15 @@ grails install-plugin jaxrs
 
 ===Upgrades===
 
-  * TODO
+  * ...
 
 ===Enhancements===
 
   * [https://github.com/krasserm/grails-jaxrs/pull/12 Added infrastructure to enable Spock integration testing]
-  * TODO
+  * ...
 
 ===Fixes===
 
   * [http://code.google.com/p/grails-jaxrs/issues/detail?id=66 Cannot use grails-jaxrs 0.6 with servlet 2.5 (it needs servlet api 3.0)].
   * [https://github.com/krasserm/grails-jaxrs/pull/11 Removed usages of the deprecated Grails ConfigurationHolder]
-  * TODO
+  * ...
