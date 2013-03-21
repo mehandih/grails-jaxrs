@@ -30,4 +30,5 @@ grails install-plugin jaxrs
 
 ===Fixes===
 
+  * Restored [http://code.google.com/p/grails-jaxrs/issues/detail?id=66 servlet 2.5 api compatibility] (lost with grails-jaxrs 0.6).
   * TODO
