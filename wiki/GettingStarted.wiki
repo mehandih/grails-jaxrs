@@ -1,5 +1,4 @@
 #summary A quick guide to getting started with the JSR 311 plugin for Grails.
-#labels Featured
 
 <wiki:toc/>
 
