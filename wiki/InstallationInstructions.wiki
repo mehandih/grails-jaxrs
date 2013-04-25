@@ -1,5 +1,4 @@
 #summary Installation instructions for the JSR 311 plugin for Grails.
-#labels Featured
 
 <wiki:toc/>
 
